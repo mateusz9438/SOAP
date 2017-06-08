@@ -41,4 +41,8 @@ public class ActiveUsersRepository {
 		}
 		return uuid.toString();
 	}
+	public static Map<String, String> getLoginUuid() {
+		return loginUuid;
+	}
+	
 }

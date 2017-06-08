@@ -8,6 +8,7 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 import io.spring.guides.gs_producing_web_service.AddCountryRequest;
 import io.spring.guides.gs_producing_web_service.AddCountryResponse;
+import io.spring.guides.gs_producing_web_service.Country;
 import io.spring.guides.gs_producing_web_service.DeleteCountryRequest;
 import io.spring.guides.gs_producing_web_service.DeleteCountryResponse;
 import io.spring.guides.gs_producing_web_service.GetCountryRequest;
@@ -36,16 +37,28 @@ public class CountryEndpoint {
 	@ResponsePayload
 	public AddCountryResponse addCountry(@RequestPayload AddCountryRequest request) {
 		AddCountryResponse response = new AddCountryResponse();
-		response.setCountry(countryRepository.addCountry(request.getName(),request.getCapital(),request.getCurrency(),request.getPopulation()));
-		response.setMessage("Country added");
+		Country country = countryRepository.addCountry(request.getUuid(),request.getName(),request.getCapital(),request.getCurrency(),request.getPopulation());
+		if(country != null){
+			response.setCountry(country);
+			response.setMessage("Country added");
+			return response;
+		}
+		response.setMessage("Access denied");
 		return response;
+		
 	}
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "deleteCountryRequest")
 	@ResponsePayload
 	public DeleteCountryResponse deleteCountry(@RequestPayload DeleteCountryRequest request) {
 		DeleteCountryResponse response = new DeleteCountryResponse();
-		response.setMessage("Country removed");
-		response.setName(countryRepository.deleteCountry(request.getName()));
+		String countryName = countryRepository.deleteCountry(request.getUuid(),request.getName());
+		if(countryName!=null){
+			response.setMessage("Country removed");
+			response.setName(countryName);
+			return response;
+		}
+		response.setMessage("Access denied");
 		return response;
+
 	}
 }

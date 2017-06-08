@@ -1,13 +1,16 @@
 package hello;
 
-import javax.annotation.PostConstruct;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import io.spring.guides.gs_producing_web_service.Country;
-import io.spring.guides.gs_producing_web_service.Currency;
+import javax.annotation.PostConstruct;
+
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
+
+import io.spring.guides.gs_producing_web_service.Country;
+import io.spring.guides.gs_producing_web_service.Currency;
 
 @Component
 public class CountryRepository {
@@ -41,10 +44,15 @@ public class CountryRepository {
 	}
 
 	public Country findCountry(String name) {
+		Assert.notNull(name, "The uuid must not be null");
 		Assert.notNull(name, "The country's name must not be null");
 		return countries.get(name);
 	}
-	public Country addCountry(String name, String capital, Currency currency, int population){
+
+	public Country addCountry(String uuid, String name, String capital, Currency currency, int population) {
+		if (!verifyUuid(uuid)) {
+			return null;
+		}
 		Country newCountry = new Country();
 		newCountry.setName(name);
 		newCountry.setCapital(capital);
@@ -53,8 +61,21 @@ public class CountryRepository {
 		countries.put(name, newCountry);
 		return newCountry;
 	}
-	public String deleteCountry(String name){
+
+	public String deleteCountry(String uuid, String name) {
+		if (!verifyUuid(uuid)) {
+			return null;
+		}
 		countries.remove(name);
 		return name;
+	}
+
+	private boolean verifyUuid(String uuid) {
+		Collection<String> uuids = ActiveUsersRepository.getLoginUuid().values();
+		if (uuids.contains(uuid)) {
+			return true;
+		}
+		;
+		return false;
 	}
 }
