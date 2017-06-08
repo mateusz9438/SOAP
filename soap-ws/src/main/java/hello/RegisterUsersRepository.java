@@ -8,8 +8,7 @@ import javax.annotation.PostConstruct;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
-import io.spring.guides.gs_producing_web_service.Country;
-import io.spring.guides.gs_producing_web_service.User;
+import countries.core.common.User;
 
 @Component
 public class RegisterUsersRepository {

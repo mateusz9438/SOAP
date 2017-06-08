@@ -6,9 +6,7 @@ import java.util.Random;
 
 import org.springframework.stereotype.Component;
 
-import io.spring.guides.gs_producing_web_service.Country;
-import io.spring.guides.gs_producing_web_service.Currency;
-import io.spring.guides.gs_producing_web_service.User;
+import countries.core.common.User;
 
 @Component
 public class ActiveUsersRepository {

@@ -9,8 +9,8 @@ import javax.annotation.PostConstruct;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
-import io.spring.guides.gs_producing_web_service.Country;
-import io.spring.guides.gs_producing_web_service.Currency;
+import countries.core.common.Country;
+import countries.core.common.Currency;
 
 @Component
 public class CountryRepository {
