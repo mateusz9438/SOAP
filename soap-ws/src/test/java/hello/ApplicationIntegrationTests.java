@@ -56,17 +56,11 @@ public class ApplicationIntegrationTests {
         GetCountryRequest request = new GetCountryRequest();
         request.setName("Spain");
 
+        System.out.println(ws.marshalSendAndReceive("http://localhost:"
+                + port + "/ws", request));
         assertThat(ws.marshalSendAndReceive("http://localhost:"
                 + port + "/ws", request)).isNotNull();
     }
-    @Test
-    public void myTest() {
-    	Map<String, User> registerUsers = new HashMap<>();
-    	User user = new User();
-    	
-    	registerUsers.put("user", user);
-    	System.out.println(registerUsers.get("uer"));
 
-    }
-    
+
 }
