@@ -3,6 +3,8 @@
 	targetNamespace="core.countries"
 	elementFormDefault="qualified">
 
+<!--  wsimport -keep -verbose http://localhost:8080/ws/countries.wsdl -->
+
 	<xs:element name="getCountryRequest">
 		<xs:complexType>
 			<xs:sequence>
@@ -71,6 +73,22 @@
 			<xs:sequence>
 				<xs:element name="message" type="xs:string" />
 				<xs:element name="uuid" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="logoutUserResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="login" type="xs:string" />
+				<xs:element name="message" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="logoutUserRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="uuid" type="xs:string" />
+				<xs:element name="login" type="xs:string" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

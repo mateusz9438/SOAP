@@ -1,5 +1,6 @@
 package hello;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -17,14 +18,23 @@ public class ActiveUsersRepository {
 		User newUser = RegisterUsersRepository.getUser(login,password);
 		if(newUser!=null)
 		{
+			if(activeUsers.get(login)==null){
 			String uuid = generateUuid();
 			activeUsers.put(login, newUser);
 			loginUuid.put(login,uuid);
 			return uuid;
+			}
+			return null;
 		}
 		return null;
 	}
-	public String logoutUser(String login){
+	public String logoutUser(String uuid ,String login){
+		if(!verifyUuid(uuid)){
+			return null;
+		}
+		if(!verifyLogin(login)){
+			return null;
+		}
 		activeUsers.remove(login);
 		loginUuid.remove(login);
 		return login;
@@ -42,5 +52,20 @@ public class ActiveUsersRepository {
 	public static Map<String, String> getLoginUuid() {
 		return loginUuid;
 	}
-	
+
+
+	private boolean verifyUuid(String uuid) {
+		Collection<String> uuids = getLoginUuid().values();
+		if (uuids.contains(uuid)) {
+			return true;
+		}
+		return false;
+	}
+	private boolean verifyLogin(String login) {
+		if (getLoginUuid().containsKey(login)) {
+			return true;
+		}
+		return false;
+	}
 }
+
