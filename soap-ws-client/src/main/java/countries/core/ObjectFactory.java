@@ -62,6 +62,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link LogoutUserResponse }
+     * 
+     */
+    public LogoutUserResponse createLogoutUserResponse() {
+        return new LogoutUserResponse();
+    }
+
+    /**
+     * Create an instance of {@link LogoutUserRequest }
+     * 
+     */
+    public LogoutUserRequest createLogoutUserRequest() {
+        return new LogoutUserRequest();
+    }
+
+    /**
      * Create an instance of {@link GetCountryResponse }
      * 
      */

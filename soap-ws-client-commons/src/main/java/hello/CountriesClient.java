@@ -1,12 +1,23 @@
 package hello;
 
-import countries.core.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.ws.client.core.WebServiceTemplate;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 import org.springframework.ws.soap.client.core.SoapActionCallback;
+
+import countries.core.common.AddCountryRequest;
+import countries.core.common.AddCountryResponse;
+import countries.core.common.Currency;
+import countries.core.common.DeleteCountryRequest;
+import countries.core.common.DeleteCountryResponse;
+import countries.core.common.GetCountryRequest;
+import countries.core.common.GetCountryResponse;
+import countries.core.common.LoginUserRequest;
+import countries.core.common.LoginUserResponse;
+import countries.core.common.LogoutUserRequest;
+import countries.core.common.LogoutUserResponse;
 
 
 public class CountriesClient extends WebServiceGatewaySupport {

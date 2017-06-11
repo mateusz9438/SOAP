@@ -43,7 +43,7 @@ public class UsersEndpoint {
         String login = activeUsersRepository.logoutUser(request.getUuid(),request.getLogin());
 	    if(login!=null){
 	        response.setLogin(login);
-	        response.setMessage(login + "logout successful");
+	        response.setMessage(login + " logout successful");
 	        return response;
         }
         response.setMessage("you are not logged");

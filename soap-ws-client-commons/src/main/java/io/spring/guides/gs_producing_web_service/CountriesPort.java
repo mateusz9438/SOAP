@@ -7,17 +7,18 @@ import javax.jws.WebResult;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 import javax.xml.bind.annotation.XmlSeeAlso;
-import countries.core.AddCountryRequest;
-import countries.core.AddCountryResponse;
-import countries.core.DeleteCountryRequest;
-import countries.core.DeleteCountryResponse;
-import countries.core.GetCountryRequest;
-import countries.core.GetCountryResponse;
-import countries.core.LoginUserRequest;
-import countries.core.LoginUserResponse;
-import countries.core.LogoutUserRequest;
-import countries.core.LogoutUserResponse;
-import countries.core.ObjectFactory;
+
+import countries.core.common.AddCountryRequest;
+import countries.core.common.AddCountryResponse;
+import countries.core.common.DeleteCountryRequest;
+import countries.core.common.DeleteCountryResponse;
+import countries.core.common.GetCountryRequest;
+import countries.core.common.GetCountryResponse;
+import countries.core.common.LoginUserRequest;
+import countries.core.common.LoginUserResponse;
+import countries.core.common.LogoutUserRequest;
+import countries.core.common.LogoutUserResponse;
+import countries.core.common.ObjectFactory;
 
 
 /**

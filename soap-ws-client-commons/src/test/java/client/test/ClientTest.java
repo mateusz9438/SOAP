@@ -1,7 +1,5 @@
 package client.test;
 
-import countries.core.*;
-import hello.CountriesClient;
 import org.assertj.core.api.Assertions;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
@@ -10,6 +8,14 @@ import org.junit.runners.MethodSorters;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
+
+import countries.core.common.AddCountryResponse;
+import countries.core.common.Currency;
+import countries.core.common.DeleteCountryResponse;
+import countries.core.common.GetCountryResponse;
+import countries.core.common.LoginUserResponse;
+import countries.core.common.LogoutUserResponse;
+import hello.CountriesClient;
 
 
 /**
@@ -27,7 +33,7 @@ public class ClientTest {
     @BeforeClass
     public static void setUp() throws Exception {
         marshaller = new Jaxb2Marshaller();
-        marshaller.setContextPath("countries.core");
+        marshaller.setContextPath("countries.core.common");
         marshaller.afterPropertiesSet();
         countriesClient = new CountriesClient(marshaller);
     }
